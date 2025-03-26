@@ -25,12 +25,21 @@ def bfs(graph,start,visited,path):
     while len(queue) != 0:
         tmpnode = queue.popleft()
         #TYPE UR CODE HERE
+        for neighbor in graph[tmpnode]:
+            if not visited[neighbor]:
+                path.append(neighbor)
+                queue.append(neighbor)
+                visited[neighbor] = True
+    
     return path
 
 graph = defaultdict(list)
 v,e = map(int,input().split())
 for i in range(e):
-    #TYOE UR CODE HERE
+    #TYPE UR CODE HERE
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)
 
 start = '0'
 path = []
